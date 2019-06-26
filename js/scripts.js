@@ -1,30 +1,33 @@
-$(document).ready(function() {
-
-  var numbers = []
-  var numberSwitch = [];
-
-  for (var index = 1; index <= userNum; index += 1) {
-    numbers.push(index);
-    alert(index);
-  };
-
-  numbers.forEach(function(number) {
-    if ((number % 3 == 0) && (number % 5 != 0)) {
-      numberSwitch.push("ping");
-    } else if ((number % 5 == 0) && (number % 3 != 0)) {
-      numberSwitch.push("pong");
-    } else if ((number % 3 == 0) && (number % 5 == 0)) {
-      numberSwitch.push("pingpong")
+// Business Logic
+var pingPong = function(userNumber) {
+  var alteredArray = [];
+  for (var index = 1; index <= userNumber; index += 1) {
+    if ((index % 3 == 0) && (index % 5 != 0)) {
+      alteredArray.push("ping");
+    } else if ((index % 5 == 0) && (index % 3 != 0)) {
+      alteredArray.push("pong");
+    } else if ((index % 3 == 0) && (index % 5 == 0)) {
+      alteredArray.push("pingpong")
     } else {
-      numberSwitch.push(number);
+      alteredArray.push(index);
     };
-  });
+  };
+  return alteredArray;
+}
+
+
+// UI Logic
+$(document).ready(function() {
 
   $("form#user-input").submit(function(event) {
     var userNum = parseInt($("input#userNum").val());
-    alert("User number is " + userNum);
-    alert("output array" + numberSwitch);
     event.preventDefault();
+    var outputArray = pingPong(userNum);
+    console.log('output', outputArray);
+    outputArray.forEach(function(number) {
+      alert(number);
+      $("ul#numList").append("<li>" + number + "</li>");
+    });
     $(".result").show();
   });
   $("button#reset").click(function(event) {
