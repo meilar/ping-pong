@@ -1,6 +1,8 @@
 
 # Ping-Pong
 
+## [View this project on Github Pages](https://meilar.github.io/ping-pong/)
+
 # Overview
 
 This project is designed to take a number from a user and display a list of all of the numbers from 1 to the submitted number, where also all numbers divisible by 3 are replaced with "ping," all numbers divisible by 5 are replaced with "pong", and all numbers divisible by 3 AND 5 are replaced with "pingpong."
